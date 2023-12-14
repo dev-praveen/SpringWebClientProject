@@ -13,7 +13,6 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-import javax.mail.MessagingException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class WebClientController {
 
   private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
 
-  @Autowired private WebClient webClient;
+  //@Autowired private WebClient webClient;
 
   //@Autowired private EmailUtil emailUtil;
 
@@ -67,6 +66,7 @@ public class WebClientController {
 
     log.debug("Entered in getPhotos method");
     try {
+      final WebClient webClient = getWebClientBuilder();
       PhotosResponse photosResponse = new PhotosResponse();
       RestTemplate restTemplate = getRestTemplate();
       log.debug("Calling external service using RestTemplate " + BASE_URL);
